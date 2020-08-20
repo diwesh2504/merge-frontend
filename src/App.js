@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import Home from './Home';
+import MainPage from './Todo/MainPage';
+import LandingPage from './Facebook/LandingPage';
 function App() {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+      <ul className="nav">
+        
+        <li className="nav-item">
+          <Link className="nav-link" to ="/">Home</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to ="/todo">Todo</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to ="/facebook">Facebook</Link>
+          </li>
+    </ul>
+    </nav>
+  </div>
+  <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/todo" component={MainPage}/>
+        <Route exact path="/facebook" component={LandingPage}/>
+      </Switch>
+      
+    </Router>
   );
+  
 }
+
+
+
+
+
+
+
 
 export default App;
